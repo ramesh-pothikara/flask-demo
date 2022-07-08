@@ -1,0 +1,4 @@
+
+https://computingforgeeks.com/install-latest-python-on-centos-linux/
+https://vahiwe.medium.com/deploy-django-and-flask-applications-in-the-cloud-using-nginx-gunicorn-and-systemd-centos-7-4b6aef3a8578
+

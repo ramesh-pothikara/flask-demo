@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+CommVault - Service Restart Request
+{% endblock %}
+
+{% block content %}
+<body class="text-left" onload="loadpg()" >
+    <div class="container">
+        <form  method="POST" action="{{ url_for('service_restart_page')}}"   class="form-register" style="color:white"  onsubmit="btnDisable()">
+
+
+            <h1 class="h3 mb-3 font-weight-normal">
+                CommVault - Service Restart Request
+            </h1>
+            <br>
+            <label for="ipaddr">IP Addr:</label>
+            <input class="form-control" type="text" placeholder="IP Address" name="ip_addr">
+
+            <br>
+            <input class="btn btn-primary" type="submit" value="Submit" id="submit_btn">
+            <br>
+            <br>
+            <span id="status_label" id="status_label" name="status_label" class="badge rounded-pill text-bg-light"> Status </span>
+            <br>
+            <br> 
+            <textarea class="form-control" id="status" name="status" rows="4" cols="50">{{ data }}  </textarea>
+            <br>
+            {% if message %}
+            <p>{{ message }}</p>
+            {% endif %}
+
+        </form>
+
+    </div>
+
+    
+<script>
+    function btnDisable() {
+        //alert("StopStart Commvault")
+        document.getElementById("submit_btn").disabled = true;
+        document.getElementById("status_label").innerHTML = 'Running.. Please wait..';
+        document.getElementById("status").innerHTML = " ";
+    }
+
+    function loadpg() {
+        //alert("Page Load")
+        var submit_btn_disable = {{ submit_btn_disable | tojson }};
+        if (submit_btn_disable == "YES") {
+            document.getElementById("submit_btn").disabled = true;
+        }
+
+    }
+
+</script>
+</body>
+
+
+
+{% endblock %}
+
